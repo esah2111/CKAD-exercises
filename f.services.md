@@ -120,7 +120,7 @@ kubectl create deploy foo --image=dgkanatsios/simpleapp --port=8080 --replicas=3
 </p>
 </details>
 
-### Get the pod IPs. Create a temp busybox pod and trying hitting them on port 8080
+### Get the pod IPs. Create a temp busybox pod and try hitting them on port 8080
 
 <details><summary>show</summary>
 <p>
@@ -179,9 +179,9 @@ kubernetes.io > Documentation > Concepts > Services, Load Balancing, and Network
 
 ```bash
 kubectl create deployment nginx --image=nginx --replicas=2
-kubectl expose ndeployment nginx --port=80
+kubectl expose deployment nginx --port=80
 
-kubectl describe svc nginx # see the 'run=nginx' selector for the pods
+kubectl describe svc nginx # see the 'app=nginx' selector for the pods
 # or
 kubectl get svc nginx -o yaml
 
@@ -196,7 +196,7 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      run: nginx # selector for the pods
+      app: nginx # selector for the pods
   ingress: # allow ingress traffic
   - from:
     - podSelector: # from pods
